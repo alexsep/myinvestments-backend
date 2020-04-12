@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories("com.myinvestments.adapter")
-@EntityScan("com.myinvestments.adapter")
+@EnableJpaRepositories("com.myinvestments.adapter.repositories")
+@EntityScan("com.myinvestments.adapter.entities")
 @SpringBootApplication(scanBasePackages = "com.myinvestments")
 public class WebApiApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {

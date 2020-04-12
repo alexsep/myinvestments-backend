@@ -11,7 +11,7 @@ import java.util.UUID;
 @Data
 public class Entity {
 
-    private UUID id;
+    private UUID id = null;
     private boolean isValid = false;
     private List<NotificationDto> validationResult = new ArrayList<>();
 
