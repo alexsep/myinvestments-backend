@@ -1,4 +1,4 @@
-package com.myinvestments.application.usecases;
+package com.myinvestments.application.usecases.investment;
 
 import com.myinvestments.core.entities.Investment;
 import com.myinvestments.core.interfaces.repositories.investments.InvestmentWriteOnlyRepository;

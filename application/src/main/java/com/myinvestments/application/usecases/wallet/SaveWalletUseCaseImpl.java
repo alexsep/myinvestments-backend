@@ -1,4 +1,4 @@
-package com.myinvestments.application.usecases;
+package com.myinvestments.application.usecases.wallet;
 
 import com.myinvestments.core.entities.Wallet;
 import com.myinvestments.core.interfaces.repositories.wallet.WalletWriteOnlyRepository;
@@ -19,9 +19,9 @@ public class SaveWalletUseCaseImpl implements SaveWalletUseCase {
 
     @Override
     public Wallet save(Wallet wallet) {
-        boolean isValid = wallet.validate(wallet, walletValidation);
-        if (isValid) {
-            walletWriteOnlyRepository.save(wallet);
+        wallet.validate(wallet, walletValidation);
+        if (wallet.isValid()) {
+            return walletWriteOnlyRepository.save(wallet);
         }
         return wallet;
     }

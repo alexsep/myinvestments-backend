@@ -14,6 +14,11 @@ public class InvestmentValidationImpl implements InvestmentValidation {
     @Override
     public List<NotificationDto> validate(Investment entity) {
         List<NotificationDto> notificationDtoList = new ArrayList<>();
+
+        if(entity.getWallet() == null){
+            notificationDtoList.add(new NotificationDto("wallet","Wallet is mandatory"));
+        }
+
         return notificationDtoList;
     }
 }

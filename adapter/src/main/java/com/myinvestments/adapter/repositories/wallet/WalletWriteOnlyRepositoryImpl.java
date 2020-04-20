@@ -7,6 +7,7 @@ import com.myinvestments.core.entities.Wallet;
 import com.myinvestments.core.interfaces.repositories.wallet.WalletWriteOnlyRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Service
@@ -19,8 +20,11 @@ public class WalletWriteOnlyRepositoryImpl implements WalletWriteOnlyRepository 
     }
 
     @Override
+    @Transactional
     public Wallet save(Wallet wallet) {
         WalletPersistence walletPersistence = walletPersistenceRepository.save(WalletMapper.INSTANCE.map(wallet));
+        walletPersistenceRepository.save(walletPersistence);
+
         wallet.setId(walletPersistence.getId());
         wallet.setInvestments(InvestmentMapper.INSTANCE.map(walletPersistence.getInvestments()));
         return wallet;
